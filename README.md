@@ -28,15 +28,15 @@ Methods
 -------
 <table>
   <tr>
-    <th>Name</th><th>Description</th><th>Return</th>
+    <th>Name</th><th>Description</th>
   </tr>
   <tr>
-    <td>reloadMap</td><td>Reloads map</td><td>void</td>
+    <td>reloadMap</td><td>Reloads map</td>
   </tr>
   <tr>
-    <td>resizeMap</td><td>Resizes map</td><td>void</td>
+    <td>resizeMap</td><td>Resizes map</td>
   </tr>
   <tr>
-    <td>geoLocation</td><td>Set value to html5 geo-location</td><td>void</td>
+    <td>geoLocation</td><td>Set value to html5 geo-location</td>
   </tr>
 </table>
