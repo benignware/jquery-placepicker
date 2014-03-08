@@ -14,13 +14,13 @@ Options
 -------
 <table>
   <tr>
-    <th>Name</th><th>Description</th><th>Default</th>
+    <th>Name</th><th>Description</th>
   </tr>
   <tr>
-    <td>map</td><td>Map selector or map-element</td><td></td>
+    <td>map</td><td>Map selector or map-element</td>
   </tr>
   <tr>
-    <td>mapOptions</td><td>An object with google maps api options</td><td></td>
+    <td>mapOptions</td><td>An object with google maps api options</td>
   </tr>
 </table>
 
