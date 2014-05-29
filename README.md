@@ -76,7 +76,8 @@ $(function() {
   });
   
 });      
-         
+```
+    
 
 Options
 -------
@@ -89,6 +90,9 @@ Options
   </tr>
   <tr>
     <td>mapOptions</td><td>An object with google maps api options</td>
+  </tr>
+  <tr>
+    <td>placeChanged</td><td>This callback is fired when location changed</td>
   </tr>
 </table>
 
@@ -106,5 +110,11 @@ Methods
   </tr>
   <tr>
     <td>geoLocation</td><td>Set value to html5 geo-location</td>
+  </tr>
+  <tr>
+    <td>getLocation</td><td>Returns an object containing the current location</td><td>void</td>
+  </tr>
+  <tr>
+    <td>geoLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td>
   </tr>
 </table>

@@ -519,39 +519,61 @@ function setDocumentScrollTop(ypos)
   <span class="p">});</span>
 
 <span class="p">});</span>      
-
-
-<span class="nx">Options</span>
-<span class="o">-------</span>
-<span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Name</span><span class="o">&lt;</span><span class="err">/th&gt;&lt;th&gt;Description&lt;/th&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">map</span><span class="o">&lt;</span><span class="err">/td&gt;&lt;td&gt;Map selector or map-element&lt;/td&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">mapOptions</span><span class="o">&lt;</span><span class="err">/td&gt;&lt;td&gt;An object with google maps api options&lt;/td&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-<span class="o">&lt;</span><span class="err">/table&gt;</span>
-
-<span class="nx">Methods</span>
-<span class="o">-------</span>
-<span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Name</span><span class="o">&lt;</span><span class="err">/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th&gt;Return&lt;/th&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">reloadMap</span><span class="o">&lt;</span><span class="err">/td&gt;&lt;td&gt;Reloads map&lt;/td&gt;&lt;td&gt;void&lt;/td&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">resizeMap</span><span class="o">&lt;</span><span class="err">/td&gt;&lt;td&gt;Resizes map&lt;/td&gt;&lt;td&gt;void&lt;/td&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-  <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="nx">geoLocation</span><span class="o">&lt;</span><span class="err">/td&gt;&lt;td&gt;Set value to html5 geo-location&lt;/td&gt;</span>
-  <span class="o">&lt;</span><span class="err">/tr&gt;</span>
-<span class="o">&lt;</span><span class="err">/table&gt;</span>
 </pre>
-</div>
+</div> 
+<h2> <a name="user-content-options" class="anchor" href="..md.html#options"><span class="octicon octicon-link"></span></a>Options</h2> 
+<table> 
+ <tbody>
+  <tr> 
+   <th>Name</th> 
+   <th>Description</th> 
+  </tr> 
+  <tr> 
+   <td>map</td> 
+   <td>Map selector or map-element</td> 
+  </tr> 
+  <tr> 
+   <td>mapOptions</td> 
+   <td>An object with google maps api options</td> 
+  </tr> 
+  <tr> 
+   <td>placeChanged</td> 
+   <td>This callback is fired when location changed</td> 
+  </tr> 
+ </tbody>
+</table>
+<h2> <a name="user-content-methods" class="anchor" href="..md.html#methods"><span class="octicon octicon-link"></span></a>Methods</h2> 
+<table> 
+ <tbody>
+  <tr> 
+   <th>Name</th> 
+   <th>Description</th> 
+   <th>Return</th> 
+  </tr> 
+  <tr> 
+   <td>reloadMap</td> 
+   <td>Reloads map</td> 
+   <td>void</td> 
+  </tr> 
+  <tr> 
+   <td>resizeMap</td> 
+   <td>Resizes map</td> 
+   <td>void</td> 
+  </tr> 
+  <tr> 
+   <td>geoLocation</td> 
+   <td>Set value to html5 geo-location</td> 
+  </tr> 
+  <tr> 
+   <td>getLocation</td> 
+   <td>Returns an object containing the current location</td> 
+   <td>void</td> 
+  </tr> 
+  <tr> 
+   <td>geoLatLng</td> 
+   <td>Returns an object of type google.maps.LatLng containing the current location </td> 
+  </tr> 
+ </tbody>
+</table>
 </body>
 </html>
