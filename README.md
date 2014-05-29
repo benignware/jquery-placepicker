@@ -115,6 +115,6 @@ Methods
     <td>getLocation</td><td>Returns an object containing the current location</td><td>void</td>
   </tr>
   <tr>
-    <td>geoLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td>
+    <td>getLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td>
   </tr>
 </table>
