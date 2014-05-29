@@ -25,6 +25,7 @@
         $("#placepicker").placepicker();
         
         // Advanced usage
+        
         $(".placepicker").each(function() {
 
           // find map-element
@@ -90,15 +91,16 @@
       <h1>Basic usage</h1>
       
       <div class="row" data-example>
-        
          <div class="col-md-6">
            <div class="form-group">
-             <input id="placepicker" class="form-control"/>
+             <input id="placepicker" class="form-control" data-latitude="53.538764" data-longitude="10.028240"/>
            </div>
          </div>
        </div>
-      
+       
       <h1>Advanced usage</h1>
+      
+      <h3>Integrating a map view</h3>
       
       <div class="row" data-example>
          <div class="col-md-6">
@@ -119,8 +121,6 @@
          </div>
        </div>
       
-      
-
       
       
     </div>

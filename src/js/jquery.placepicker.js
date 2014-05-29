@@ -12,7 +12,8 @@
       
     }, 
     // callbacks
-    placeChanged: null
+    placeChanged: null, 
+    location: null
   };
   
   function PlacePicker(element, options) {
@@ -67,8 +68,8 @@
 
     
     function codeLatLng(latlng) {
-      
-      service.search({'location': latlng, radius: '500'}, function callback(results, status) {
+      /*
+      service.search({'location': latlng, radius: '0.000000001'}, function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           if (results.length) {
             service.getDetails({reference: results[0].reference}, function(result, status) {
@@ -80,13 +81,13 @@
             });
           }
         }
-      });
+      });*/
       
-      /* // old geocoder
       geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
-            var address = results[0].formatted_address;
+            var place = results[0];
+            var address = place.formatted_address;
             marker.setPosition(latlng);
             element.value = address;
           } else {
@@ -96,7 +97,7 @@
           alert('Geocoder failed due to: ' + status);
         }
       });
-      */
+      
     }
     
     function setupMarker(place) {
@@ -139,10 +140,8 @@
   
     function initMap() {
 
-      mapElement = $(options.map).get(0);
+      mapElement = $(options.map).get(0) || document.createElement('div');
       
-      if (!mapElement) return;
-
       map = new google.maps.Map(mapElement, options.mapOptions);
 
       autocomplete.bindTo('bounds', map);
@@ -163,17 +162,14 @@
       
     }
     
+    
     function initAutoComplete() {
       
       autocomplete = new google.maps.places.Autocomplete(element, options.autoCompleteOptions);
       
       google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        
-        
         var place = autocomplete.getPlace();
-        // If the place has a geometry, then present it on a map.
         setupMarker(place);
-        
         placeChanged(place);
       });
     }
@@ -182,6 +178,16 @@
       
       initAutoComplete();
       initMap();
+      
+      if (!element.value) {
+        var lat = $element.data('latitude') || options.latitude;
+        var lng = $element.data('longitude') || options.longitude;
+        if (lat && lng) {
+          instance.setLocation(lat, lng);
+        }
+      } else {
+        codePlace(element.value);
+      }
       
     }
     
@@ -197,6 +203,20 @@
       map.setCenter(pos);
     }
     
+    this.setValue = function(value) {
+      element.value = value;
+      codePlace(value);
+    };
+    
+    this.getValue = function() {
+      return element.value;
+    };
+    
+    this.setLocation = function(latitude, longitude) {
+      var latLng = new google.maps.LatLng(latitude, longitude);
+      this.setLatLng(latLng);
+    };
+    
     this.getLocation = function() {
       var latLng = this.getLatLng();
       if (latLng) {
@@ -207,11 +227,16 @@
       }
     };
     
+    this.setLatLng = function(latLng) {
+      _latLng = latLng;
+      codeLatLng(_latLng);
+    };
+    
     this.getLatLng = function() {
       if (_place && _place.geometry) {
         return _place.geometry.location;
       }
-      return;
+      return _latLng;
     };
     
     this.getMap = function() {
