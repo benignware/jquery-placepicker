@@ -10,6 +10,9 @@
     }, 
     autoCompleteOptions: {
       
+    }, 
+    change: function() {
+      
     }
   };
   
@@ -26,6 +29,9 @@
     var service = null;
     
     var autocomplete;
+    
+    // stores the current place
+    var _place = null;
   
     function codePlace(query) {
       
@@ -41,6 +47,7 @@
             var place = results[i];
             updatePosition(place.geometry.location);
             setupMarker(place);
+            placeChanged(place);
           }
         }
       });
@@ -61,6 +68,22 @@
 
     
     function codeLatLng(latlng) {
+      
+      service.search({'location': latlng, radius: '500'}, function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          if (results.length) {
+            service.getDetails({reference: results[0].reference}, function(result, status) {
+              var place = result;
+              var address = place.formatted_address;
+              marker.setPosition(latlng);
+              element.value = address;
+              placeChanged(place);
+            });
+          }
+        }
+      });
+      
+      /* // old geocoder
       geocoder.geocode({'latLng': latlng}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
@@ -74,7 +97,7 @@
           alert('Geocoder failed due to: ' + status);
         }
       });
-      
+      */
     }
     
     function setupMarker(place) {
@@ -147,11 +170,12 @@
       
       google.maps.event.addListener(autocomplete, 'place_changed', function() {
         
-        var place = autocomplete.getPlace();
         
+        var place = autocomplete.getPlace();
         // If the place has a geometry, then present it on a map.
         setupMarker(place);
-    
+        
+        placeChanged(place);
       });
     }
   
@@ -160,6 +184,11 @@
       initAutoComplete();
       initMap();
       
+    }
+    
+    function placeChanged(place) {
+      console.log("PLACE CHANGED", place);
+      _place = place;
     }
     
     function updatePosition(pos) {
