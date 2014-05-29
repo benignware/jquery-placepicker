@@ -11,9 +11,8 @@
     autoCompleteOptions: {
       
     }, 
-    change: function() {
-      
-    }
+    // callbacks
+    placeChanged: null
   };
   
   function PlacePicker(element, options) {
@@ -187,8 +186,10 @@
     }
     
     function placeChanged(place) {
-      console.log("PLACE CHANGED", place);
       _place = place;
+      if (typeof options.placeChanged == "function") {
+        options.placeChanged.call(instance, place);
+      }
     }
     
     function updatePosition(pos) {
