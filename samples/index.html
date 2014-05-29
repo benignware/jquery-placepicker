@@ -34,7 +34,10 @@
 
           // init placepicker
           var placepicker = $(this).placepicker({
-            map: $map.get(0)
+            map: $map.get(0), 
+            placeChanged: function(place) {
+              console.log("place changed: ", place.formatted_address, this.getLocation());
+            }
           }).data('placepicker');
           
           // reload map after collapse in

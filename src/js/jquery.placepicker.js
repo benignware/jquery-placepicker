@@ -197,6 +197,23 @@
       map.setCenter(pos);
     }
     
+    this.getLocation = function() {
+      var latLng = this.getLatLng();
+      if (latLng) {
+        return {
+          latitude: latLng.lat(), 
+          longitude: latLng.lng()
+        };
+      }
+    };
+    
+    this.getLatLng = function() {
+      if (_place && _place.geometry) {
+        return _place.geometry.location;
+      }
+      return;
+    };
+    
     this.getMap = function() {
       return map;
     };
