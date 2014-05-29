@@ -6,7 +6,12 @@ A simple placepicker component for the google-maps api.
 Usage
 -----
 
+
+```html
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
 ```
+
+```js
 $("#placepicker").placepicker();
 ```
 
