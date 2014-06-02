@@ -32,6 +32,7 @@
     
     // stores the current place
     var _place = null;
+    var _latLng = null;
   
     function codePlace(query) {
       
@@ -90,6 +91,7 @@
             var address = place.formatted_address;
             marker.setPosition(latlng);
             element.value = address;
+            placeChanged(place);
           } else {
             alert('No results found');
           }
