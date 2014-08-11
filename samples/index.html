@@ -22,35 +22,27 @@
       $(document).ready(function() {
         
         // Basic usage
-        $("#placepicker").placepicker();
+        $(".placepicker").placepicker();
         
         // Advanced usage
-        
-        $(".placepicker").each(function() {
-
-          // find map-element
+        $("#placepicker").each(function() {
           var target = this;
           var $collapse = $(this).parents('.form-group').next('.collapse');
           var $map = $collapse.find('.placepicker-map');
-
-          // init placepicker
           var placepicker = $(this).placepicker({
             map: $map.get(0), 
             placeChanged: function(place) {
               console.log("place changed: ", place.formatted_address, this.getLocation());
             }
           }).data('placepicker');
-          
-          // reload map after collapse in
-          $collapse.on('show.bs.collapse', function () {
-            
-            window.setTimeout(function() {
-              placepicker.resizeMap();
-              placepicker.reloadMap();
-              if (!$(target).prop('value')) {
-                placepicker.geoLocation();
-              }
-            }, 0);
+          $collapse.on('show.bs.collapse', function (e) {
+            $(e.target).css('display', 'block');
+            if (!$(target).prop('value')) {
+              placepicker.geoLocation();
+            } else {
+              placepicker.resize();
+            }
+            $(e.target).css('display', '');
           });
         });
         
@@ -86,40 +78,71 @@
     <div class="container">
     
       <h1>Basic usage</h1>
-      
       <div class="row" data-example>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="placepicker form-control" placeholder="Enter a location"/>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Set value by location coordinates</h3>
+      <div class="row" data-example>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="placepicker form-control" 
+             data-latitude="53.538764" 
+             data-longitude="10.028240"/>
+          </div>
+        </div>
+     </div>
+       
+       <h3>Use hidden inputs for submitting location coordinates</h3>
+       <div class="row" data-example>
          <div class="col-md-6">
-           <div class="form-group">
-             <input id="placepicker" class="form-control" data-latitude="53.538764" data-longitude="10.028240"/>
-           </div>
+           <form>
+             <div class="form-group">
+             
+               <input class="placepicker form-control" 
+                placeholder="Enter a location" 
+                data-latitude-input="#latitude" 
+                data-longitude-input="#longitude"/>
+                
+               <input type="hidden" id="latitude" name="latitude" value="53.538764"/>
+               <input type="hidden" id="longitude" name="longitude" value="10.028240"/>
+               
+             </div>
+             <input type="submit" value="submit" class="btn btn-default"/>
+           </form>
+           
+           
          </div>
        </div>
        
       <h1>Advanced usage</h1>
       
-      <h3>Integrating a map view</h3>
       
+      <h3>Integrating a map view</h3>
       <div class="row" data-example>
          <div class="col-md-6">
-           <div class="form-group">
-             <div class="input-group">
-               <span class="input-group-btn">
-                 <button data-toggle="collapse" href="#collapseOne" class="btn btn-default">
-                   <i class="glyphicon glyphicon-globe"></i>
-                 </button>
-               </span>
-               <input id="placepicker" class="placepicker form-control"/>
+           <form>
+             <div class="form-group">
+               <div class="input-group">
+                 <span class="input-group-btn">
+                   <button data-toggle="collapse" href="#collapseOne" class="btn btn-default" type="button">
+                     <i class="glyphicon glyphicon-globe"></i>
+                   </button>
+                 </span>
+                 <input id="placepicker" class="form-control" place="place"/>
+               </div>
              </div>
-           </div>
-           <div id="collapseOne" class="collapse">
-             <div class="placepicker-map thumbnail"></div>
-           </div>
-           
+             <div id="collapseOne" class="collapse">
+               <div class="placepicker-map thumbnail"></div>
+             </div>
+             <button type="submit">submit</button>
+           </form>
          </div>
        </div>
-      
-      
-      
     </div>
     
   </body>
