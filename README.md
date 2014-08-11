@@ -25,22 +25,19 @@ Advanced usage
 This example shows how to integrate a collapsible map-view using bootstrap
 
 ```html
-<form action="/test" method="GET">
-  <div class="form-group">
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button data-toggle="collapse" href="#collapseOne" class="btn btn-default">
-          <i class="glyphicon glyphicon-globe"></i>
-        </button>
-      </span>
-      <input class="placepicker form-control" name="place"/>
-    </div>
+<div class="form-group">
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button data-toggle="collapse" href="#collapseOne" class="btn btn-default">
+        <i class="glyphicon glyphicon-globe"></i>
+      </button>
+    </span>
+    <input class="placepicker form-control" name="place"/>
   </div>
-  <div id="collapseOne" class="collapse">
-    <div class="placepicker-map thumbnail"></div>
-  </div>
-  <button type="submit" value="SUBMIT">submit</button>
-</form>
+</div>
+<div id="collapseOne" class="collapse">
+  <div class="placepicker-map thumbnail"></div>
+</div>
 ```
 
 ```js
