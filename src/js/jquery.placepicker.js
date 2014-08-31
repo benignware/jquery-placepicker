@@ -120,7 +120,7 @@
     }
   
     function resizeHandler() {
-      resize.call(instance);
+      instance.resize.call(instance);
     }
   
     function init() {
