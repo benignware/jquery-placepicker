@@ -93,8 +93,6 @@
       marker = new google.maps.Marker({
         map: map
       });
-
-      service = new google.maps.places.PlacesService(map);
     }
 
     function initAutoComplete() {
@@ -114,6 +112,8 @@
     function init() {
 
       geocoder = new google.maps.Geocoder();
+
+      service = new google.maps.places.PlacesService(map);
 
       initAutoComplete();
       initMap();
