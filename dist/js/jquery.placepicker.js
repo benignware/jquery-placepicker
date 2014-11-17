@@ -34,6 +34,41 @@
     var _place = null;
     var _latLng = null;
 
+    /**
+     * Generates a piece of HTML that is used to replace the input element
+     * with one that also contains a globe button.
+     */
+    function template() {
+      var templateString =
+        "<div class=\"input-group\">" +
+          "<span class=\"input-group-btn\">" +
+            "<button data-toggle=\"collapse\" href=\"#" + options.mapContainerId + "\" class=\"btn btn-default\">" +
+              "<span class=\"glyphicon glyphicon-globe\"></span>" +
+            "</button>" +
+          "</span>" +
+        "</div>";
+
+      return templateString;
+    }
+
+    /**
+     * Modifies the DOM to add a globe button that hides and shows a map
+     * element.
+     */
+    function initDomElements() {
+      if (!options.mapContainerId) {
+        return;
+      }
+
+      var $element = $(element);
+      var $parent = $element.parent();
+
+      // This rigmarole is to ensure that the existing <input> is moved and
+      // not replaced.
+      $element.replaceWith(template());
+      $parent.children().append(element);
+    }
+
     function codePlace(query) {
 
       if (!query) {
@@ -69,14 +104,29 @@
           // alert("Geocoder failed due to: " + status);
         }
       });
-
     }
 
-    function initMap() {
+    /**
+     * Find and store the DOM element that holds the Google Map.
+     * @return a boolean indicating whether an element was successfully
+     * set.
+     */
+    function setMapElement() {
 
       mapElement = $(options.map).get(0);
 
       if (!mapElement) {
+        if (options.mapContainerId) {
+          mapElement = $("#" + options.mapContainerId + " .placepicker-map").get(0);
+        }
+      }
+
+      return mapElement ? true : false;
+    }
+
+    function initMap() {
+
+      if (!setMapElement()) {
         return;
       }
 
@@ -97,6 +147,21 @@
       });
 
       service = new google.maps.places.PlacesService(map);
+
+      // When the map is made visible, if we have no location set then
+      // attempt geolocation. The css() calls ensure that the map is
+      // refreshed.
+      $(mapElement).parent().on("show.bs.collapse", function(e) {
+        $(e.target).css("display", "block");
+
+        if (!element.value) {
+          instance.geoLocation();
+        } else {
+          instance.resize();
+        }
+
+        $(e.target).css("display", "");
+      });
     }
 
     function initAutoComplete() {
@@ -117,6 +182,7 @@
 
       geocoder = new google.maps.Geocoder();
 
+      initDomElements();
       initAutoComplete();
       initMap();
 
