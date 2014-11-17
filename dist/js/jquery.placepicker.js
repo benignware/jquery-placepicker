@@ -44,14 +44,16 @@
         query: query
       };
 
-      service.textSearch(request, function (results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            setPlace(results[i]);
-            return;
+      if (service) {
+        service.textSearch(request, function (results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              setPlace(results[i]);
+              return;
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     function codeLatLng(latlng) {
