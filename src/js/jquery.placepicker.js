@@ -60,13 +60,17 @@
         return;
       }
 
+      // Find the index of our element under its parent
       var $element = $(element);
       var $parent = $element.parent();
+      var index = $parent.children().index(element);
 
-      // This rigmarole is to ensure that the existing <input> is moved and
-      // not replaced.
+      // Replace the element with our template code
       $element.replaceWith(template());
-      $parent.children().append(element);
+
+      // Then inject back in the existing element. This retains all
+      // attributes on the element.
+      $parent.children().eq(index).append(element);
     }
 
     function codePlace(query) {
