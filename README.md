@@ -9,12 +9,12 @@ Usage
 Link to google-maps api and be sure to add the places-library: `https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places`
 
 ```html
-<input id="placepicker" class="form-control" data-latitude="53.538764" data-longitude="10.028240"/>
+<input class="placepicker" class="form-control" data-latitude="53.538764" data-longitude="10.028240"/>
 ```
 
 ```js
 $(function() {
-  $("#placepicker").placepicker();
+  $(".placepicker").placepicker();
 })
 ```
 
@@ -22,18 +22,12 @@ Advanced usage
 --------------
 
 ### Integrating a map view
+
 This example shows how to integrate a collapsible map-view using bootstrap
 
 ```html
 <div class="form-group">
-  <div class="input-group">
-    <span class="input-group-btn">
-      <button data-toggle="collapse" href="#collapseOne" class="btn btn-default">
-        <i class="glyphicon glyphicon-globe"></i>
-      </button>
-    </span>
-    <input class="placepicker form-control" name="place"/>
-  </div>
+  <input class="placepicker form-control" data-map-container-id="collapseOne"/>
 </div>
 <div id="collapseOne" class="collapse">
   <div class="placepicker-map thumbnail"></div>
@@ -41,30 +35,7 @@ This example shows how to integrate a collapsible map-view using bootstrap
 ```
 
 ```js
-$(function() {
-        
-  $(".placepicker").each(function() {
-    var target = this;
-    var $collapse = $(this).parents('.form-group').next('.collapse');
-    var $map = $collapse.find('.placepicker-map');
-    var placepicker = $(this).placepicker({
-      map: $map.get(0), 
-      placeChanged: function(place) {
-        console.log("place changed: ", place.formatted_address, this.getLocation());
-      }
-    }).data('placepicker');
-    $collapse.on('show.bs.collapse', function (e) {
-      $(e.target).css('display', 'block');
-      if (!$(target).prop('value')) {
-        placepicker.geoLocation();
-      } else {
-        placepicker.resize();
-      }
-      $(e.target).css('display', '');
-    });
-  });
-  
-});      
+$(".placepicker").placepicker();
 ```
 
 ```css
@@ -77,16 +48,34 @@ Options
 -------
 <table>
   <tr>
-    <th>Name</th><th>Description</th>
+    <th>Type</th><th>Name</th><th>Description</th>
   </tr>
   <tr>
-    <td>map</td><td>Map selector or map-element</td>
+    <td>HTML</td><td>data-latitude</td><td>Preset the map's latitude</td>
   </tr>
   <tr>
-    <td>mapOptions</td><td>An object with google maps api options</td>
+    <td>HTML</td><td>data-longitude</td><td>Preset the map's longitude</td>
   </tr>
   <tr>
-    <td>placeChanged</td><td>This callback is fired when location changed</td>
+    <td>HTML</td><td>data-latitude-input</td><td>Set the DOM ID of the input field to populate with the latitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-longitude-input</td><td>Set the DOM ID of the input field to populate with the longitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-map-container-id</td><td>Set the ID of the
+      element containing the map's destination element. Configuring this
+      will automatically inject an open/close button to show/hide the map.
+      The container must have the "collapse" CSS class.</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>map</td><td>Map selector or map-element</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>mapOptions</td><td>An object with google maps api options</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>placeChanged</td><td>This callback is fired when location changed</td>
   </tr>
 </table>
 
@@ -103,12 +92,12 @@ Methods
     <td>resize</td><td>Resizes map</td><td>void</td>
   </tr>
   <tr>
-    <td>geoLocation</td><td>Set value to html5 geo-location</td>
+    <td>geoLocation</td><td>Set value to html5 geo-location</td><td>void</td>
   </tr>
   <tr>
     <td>getLocation</td><td>Returns an object containing the current location</td><td>void</td>
   </tr>
   <tr>
-    <td>getLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td>
+    <td>getLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td><td>LatLng</td>
   </tr>
 </table>
