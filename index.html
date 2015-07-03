@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="http://cdn.rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="http://cdn.rawgit.com/richleland/pygments-css/master/github.css">
+    <title>jquery-placepicker</title>
+    <style>
+      .highlight-example:after {
+        color: #959595;
+        content: "Example";
+        font-size: 12px;
+        font-weight: 700;
+        left: 15px;
+        letter-spacing: 1px;
+        position: absolute;
+        text-transform: uppercase;
+        top: 15px;
+      }
+      
+      .highlight-example {
+        border-color: #e5e5e5 #eee #eee;
+        border-style: solid;
+        border-width: 1px 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+        margin: 0 -15px 15px;
+        padding: 45px 15px 15px;
+        position: relative;
+      }
+      
+      .highlight-example {
+        background-color: #fff;
+        border-color: #ddd;
+        border-radius: 4px 4px 0 0;
+        border-width: 1px;
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+      .highlight-example + .highlight {
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-width: 1px;
+          margin: -16px 0 15px;
+          border-width: 1px;
+      }
+
+      .highlight {
+          background-color: #f7f7f9;
+          border: 1px solid #e1e1e8;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          padding: 0;
+      }
+
+      .highlight pre {
+          background-color: transparent;
+          border: 0 none;
+          margin-bottom: 0;
+          margin-top: 0;
+          padding: 0;
+      }
+      
+      article.markdown-body {
+        max-width: 728px;
+        margin: 50px auto;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <article class="markdown-body"><h1 id="jquery-placepicker">jquery-placepicker</h1>
+<p>A simple placepicker component for the google-maps api. </p>
+<h2 id="usage">Usage</h2>
+<p>Include dependencies.
+Be sure to add Google Places.</p>
+<div><script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+<script src="js/jquery.placepicker.min.js"></script>
+</div>
+
+
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/jquery.placepicker.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+<div class="highlight-example">
+<input class="placepicker" size="40">
+</div>
+
+
+<div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;placepicker&quot;</span> <span class="na">size=</span><span class="s">&quot;40&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<script>
+$(".placepicker").placepicker();
+</script>
+
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.placepicker&quot;</span><span class="p">).</span><span class="nx">placepicker</span><span class="p">();</span>
+</pre></div>
+<h2 id="advanced-usage">Advanced usage</h2>
+<h3 id="integrating-a-map-view">Integrating a map view</h3>
+<p>This example shows how to integrate a collapsible map-view using bootstrap.</p>
+<p>Include Bootstrap Collapsible and styles.</p>
+<div><script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+</div>
+
+
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+<div class="highlight-example">
+<div class="form-group">
+  <input class="placepicker form-control" data-map-container-id="collapseOne">
+</div>
+<div id="collapseOne" class="collapse">
+  <div class="placepicker-map thumbnail"></div>
+</div>
+</div>
+
+
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;placepicker form-control&quot;</span> <span class="na">data-map-container-id=</span><span class="s">&quot;collapseOne&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;collapseOne&quot;</span> <span class="na">class=</span><span class="s">&quot;collapse&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;placepicker-map thumbnail&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<script>
+$(".placepicker").placepicker();
+</script>
+
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.placepicker&quot;</span><span class="p">).</span><span class="nx">placepicker</span><span class="p">();</span>
+</pre></div>
+<style>
+.placepicker-map {
+  min-height: 250px;
+}
+</style>
+
+
+<div class="highlight"><pre><span class="nc">.placepicker-map</span> <span class="p">{</span>
+  <span class="k">min-height</span><span class="o">:</span> <span class="m">250px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="options">Options</h2>
+<table>
+  <tr>
+    <th>Type</th><th>Name</th><th>Description</th>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-latitude</td><td>Preset the map&#39;s latitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-longitude</td><td>Preset the map&#39;s longitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-latitude-input</td><td>Set the DOM ID of the input field to populate with the latitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-longitude-input</td><td>Set the DOM ID of the input field to populate with the longitude</td>
+  </tr>
+  <tr>
+    <td>HTML</td><td>data-map-container-id</td><td>Set the ID of the
+      element containing the map&#39;s destination element. Configuring this
+      will automatically inject an open/close button to show/hide the map.
+      The container must have the &quot;collapse&quot; CSS class.</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>map</td><td>Map selector or map-element</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>mapOptions</td><td>An object with google maps api options</td>
+  </tr>
+  <tr>
+    <td>JavaScript</td><td>placeChanged</td><td>This callback is fired when location changed</td>
+  </tr>
+</table>
+
+<h2 id="methods">Methods</h2>
+<table>
+  <tr>
+    <th>Name</th><th>Description</th><th>Return</th>
+  </tr>
+  <tr>
+    <td>reload</td><td>Reloads map</td><td>void</td>
+  </tr>
+  <tr>
+    <td>resize</td><td>Resizes map</td><td>void</td>
+  </tr>
+  <tr>
+    <td>geoLocation</td><td>Set value to html5 geo-location</td><td>void</td>
+  </tr>
+  <tr>
+    <td>getLocation</td><td>Returns an object containing the current location</td><td>void</td>
+  </tr>
+  <tr>
+    <td>getLatLng</td><td>Returns an object of type google.maps.LatLng containing the current location </td><td>LatLng</td>
+  </tr>
+</table>
+</article>
+  </body>
+</html>
