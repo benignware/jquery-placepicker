@@ -156,8 +156,11 @@
       // attempt geolocation. The css() calls ensure that the map is
       // refreshed.
       $(mapElement).parent().on("show.bs.collapse", function(e) {
-        $(e.target).css("display", "block");
-
+        $(e.target)
+          .css("display", "block")
+          // Fix map icons
+          .find('img[src*="gstatic.com/"], img[src*="googleapis.com/"]').css('max-width', 'none');
+          
         if (!element.value) {
           instance.geoLocation();
         } else {
