@@ -3,19 +3,26 @@ jquery-placepicker
 
 A simple placepicker component for the google-maps api. 
 
+[Demo](http://benignware.github.io/jquery-placepicker)
+
 Usage
 -----
 
-Link to google-maps api and be sure to add the places-library: `https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places`
+Include dependencies.
+Be sure to add Google Places.
 
 ```html
-<input class="placepicker" class="form-control" data-latitude="53.538764" data-longitude="10.028240"/>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+<script src="js/jquery.placepicker.min.js"></script>
+```
+
+```html
+<input class="placepicker" size="40"/>
 ```
 
 ```js
-$(function() {
-  $(".placepicker").placepicker();
-})
+$(".placepicker").placepicker();
 ```
 
 Advanced usage
@@ -23,7 +30,15 @@ Advanced usage
 
 ### Integrating a map view
 
-This example shows how to integrate a collapsible map-view using bootstrap
+This example shows how to integrate a collapsible map-view using bootstrap.
+
+Include Bootstrap Collapsible and styles.
+
+```html
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+```
 
 ```html
 <div class="form-group">
@@ -40,7 +55,7 @@ $(".placepicker").placepicker();
 
 ```css
 .placepicker-map {
-  min-height: 250px
+  min-height: 250px;
 }
 ```
 
