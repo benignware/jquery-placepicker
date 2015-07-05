@@ -1,11 +1,26 @@
 {
   "name": "jquery-placepicker",
-  "version": "0.1.0",
+  "description": "A simple placepicker component for the google-maps api.",
+  "version": "0.0.1",
+  "homepage": "http://benignware.github.io/jquery-placepicker",
+  "author": {
+    "name": "Benignware",
+    "email": "mail@benignware.com",
+    "url": "https://github.com/benignware"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/benignware/jquery-placepicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benignware/jquery-placepicker/issues"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-copy": "",
+    "grunt-contrib-jshint": "~0.4.3",
     "grunt-contrib-uglify": "",
-    "grunt-jekyll-docs": "",
-		"grunt-contrib-jshint": "~0.4.3"
+    "grunt-gh-pages": "^0.10.0",
+    "grunt-livemd": "0.0.1"
   }
 }
