@@ -5,6 +5,11 @@
     <link type="text/css" rel="stylesheet" href="http://cdn.rawgit.com/richleland/pygments-css/master/github.css">
     <title>jquery-placepicker</title>
     <style>
+    
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+          
       .highlight-example:after {
         color: #959595;
         content: "Example";
@@ -38,36 +43,77 @@
       }
       
       .highlight-example + .highlight {
-          border-bottom-left-radius: 4px;
-          border-bottom-right-radius: 4px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          border-width: 1px;
-          margin: -16px 0 15px;
-          border-width: 1px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-width: 1px;
+        margin: -16px 0 15px;
+        border-width: 1px;
       }
 
       .highlight {
-          background-color: #f7f7f9;
-          border: 1px solid #e1e1e8;
-          border-radius: 4px;
-          margin-bottom: 14px;
-          padding: 0;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        border-radius: 4px;
+        margin-bottom: 14px;
+        padding: 0;
       }
 
       .highlight pre {
-          background-color: transparent;
-          border: 0 none;
-          margin-bottom: 0;
-          margin-top: 0;
-          padding: 0;
+        background-color: transparent;
+        border: 0 none;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
       }
       
       article.markdown-body {
         max-width: 728px;
         margin: 50px auto;
       }
-
+      
+      body > footer {
+        border-top: 1px solid #eee;
+        color: #767676;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: 40px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        position: relative;
+        max-width: 728px;
+        margin: 50px auto;
+      }
+      
+      body > footer > * {
+        float: left;
+        line-height: 16px;
+        font-size: 12px;
+      }
+      body > footer > *:last-child {
+        float: right;
+      }
+      
+      body > footer > nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      body > footer > nav ul li {
+        display: inline-block;
+      }
+      
+      body > footer > nav ul li + li {
+        margin-left: 10px;
+      }
+      
+      a {
+        color: #4078c0;
+        text-decoration: none;
+      }
+      
     </style>
   </head>
   <body>
@@ -76,6 +122,7 @@
     
     <article class="markdown-body"><h1 id="jquery-placepicker">jquery-placepicker</h1>
 <p>A simple placepicker component for the google-maps api. </p>
+<p><a href="http://benignware.github.io/jquery-placepicker">Demo</a></p>
 <h2 id="usage">Usage</h2>
 <p>Include dependencies.
 Be sure to add Google Places.</p>
@@ -97,9 +144,9 @@ Be sure to add Google Places.</p>
 
 <div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;placepicker&quot;</span> <span class="na">size=</span><span class="s">&quot;40&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
-<script>
-$(".placepicker").placepicker();
+<script>$(".placepicker").placepicker();
 </script>
+
 
 
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.placepicker&quot;</span><span class="p">).</span><span class="nx">placepicker</span><span class="p">();</span>
@@ -134,18 +181,18 @@ $(".placepicker").placepicker();
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;placepicker-map thumbnail&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div>
-<script>
-$(".placepicker").placepicker();
+<script>$(".placepicker").placepicker();
 </script>
+
 
 
 <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.placepicker&quot;</span><span class="p">).</span><span class="nx">placepicker</span><span class="p">();</span>
 </pre></div>
-<style>
-.placepicker-map {
+<style>.placepicker-map {
   min-height: 250px;
 }
 </style>
+
 
 
 <div class="highlight"><pre><span class="nc">.placepicker-map</span> <span class="p">{</span>
@@ -208,5 +255,33 @@ $(".placepicker").placepicker();
   </tr>
 </table>
 </article>
+    <footer>
+      <div class="disclaimer">
+        
+           &copy; 2015
+          
+            <a href="https://github.com/benignware">
+          
+            Benignware
+          
+            </a>
+          
+        
+      </div>
+      <nav>
+        <ul>
+          
+            <li>v0.0.1</li>
+          
+          
+            <li><a href="https://github.com/benignware/jquery-placepicker/archive/v0.0.1.zip">Download</a></li>
+          
+          
+            <li><a href="https://github.com/benignware/jquery-placepicker/issues">Bugs</a></li>
+          
+        </ul>
+      </nav>
+      
+    </footer>
   </body>
 </html>
