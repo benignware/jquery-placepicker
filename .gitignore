@@ -35,3 +35,9 @@ docs
 
 # DS_Store
 .DS_Store
+
+# Editor config
+.editorconfig
+
+# Site
+site
