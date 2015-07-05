@@ -1,7 +1,7 @@
 {
   "name": "jquery-placepicker",
   "description": "A simple placepicker component for the google-maps api.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://benignware.github.io/jquery-placepicker",
   "author": {
     "name": "Benignware",
