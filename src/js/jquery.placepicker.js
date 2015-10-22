@@ -42,7 +42,7 @@
       var templateString =
         "<div class=\"input-group\">" +
           "<span class=\"input-group-btn\">" +
-            "<button data-toggle=\"collapse\" href=\"#" + options.mapContainerId + "\" class=\"btn btn-default\">" +
+            "<button type=\"button\" data-toggle=\"collapse\" href=\"#" + options.mapContainerId + "\" class=\"btn btn-default\">" +
               "<span class=\"glyphicon glyphicon-globe\"></span>" +
             "</button>" +
           "</span>" +
