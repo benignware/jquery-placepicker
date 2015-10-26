@@ -281,12 +281,10 @@
 
     this.getLocation = function() {
       var latLng = this.getLatLng();
-      if (latLng) {
-        return {
-          latitude: latLng.lat(),
-          longitude: latLng.lng()
-        };
-      }
+      return {
+        latitude: latLng && latLng.lat() || options.latitude,
+        longitude: latLng && latLng.lng() || options.longitude
+      };
     };
 
     this.setLatLng = function(latLng) {
