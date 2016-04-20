@@ -185,9 +185,50 @@
       instance.resize.call(instance);
     }
 
+    /**
+     * We want to be able to select the first suggestion from Google when
+     * the user presses return. This function applies a solution from Stack
+     * Overflow, shimming the addEventListener function on the input element
+     * so that when the Google code adds event listeners, they are actually
+     * proxied through a custom handler. If a return keypress is detected
+     * (keyCode 13), then a down arrow is inserted first, which has the
+     * effect of selecting the first item in the suggestions, if any.
+     */
+    function overrideAddEventListener() {
+      // http://stackoverflow.com/a/11703018/1220963
+      var _addEventListener = (element.addEventListener) ? element.addEventListener : element.attachEvent;
+
+      function addEventListenerWrapper(type, listener) {
+        // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+        // and then trigger the original listener.
+        if (type === "keydown") {
+          var orig_listener = listener;
+          listener = function(event) {
+            var suggestion_selected = $(".pac-item-selected").length > 0;
+            if ((event.which === 13 || event.keyCode === 13) && !suggestion_selected) {
+              var simulated_downarrow = $.Event("keydown", {
+                keyCode: 40,
+                which: 40
+              });
+              orig_listener.apply(element, [simulated_downarrow]);
+            }
+
+            orig_listener.apply(element, [event]);
+          };
+        }
+
+        _addEventListener.apply(element, [type, listener]);
+      }
+
+      element.addEventListener = addEventListenerWrapper;
+      element.attachEvent = addEventListenerWrapper;
+    }
+
     function init() {
 
       geocoder = new google.maps.Geocoder();
+
+      overrideAddEventListener();
 
       initDomElements();
       initAutoComplete();
