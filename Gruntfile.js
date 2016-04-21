@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 
     // Lint definitions
     jshint: {
-      all: ["src/**.js"],
+      all: ["src/**/*.js"],
       options: {
         jshintrc: ".jshintrc"
       }
@@ -59,9 +59,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-gh-pages");
 
   grunt.registerTask('default', ['copy:dist', 'jshint', 'uglify']);
-  
+
   grunt.registerTask('build', ['copy:dist', 'uglify']);
-  
+
   grunt.registerTask('site', ['build', 'copy:site', 'livemd:site']);
 
 };
