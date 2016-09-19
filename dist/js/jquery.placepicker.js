@@ -4,6 +4,7 @@
 
   var defaults = {
     map: "",
+    mapIconClass: "glyphicon glyphicon-globe",
     mapOptions: {
       zoom: 15
     },
@@ -43,7 +44,7 @@
         "<div class=\"input-group\">" +
           "<span class=\"input-group-btn\">" +
             "<button type=\"button\" data-toggle=\"collapse\" href=\"#" + options.mapContainerId + "\" class=\"btn btn-default\">" +
-              "<span class=\"glyphicon glyphicon-globe\"></span>" +
+              "<span class=\"" + options.mapIconClass + "\"></span>" +
             "</button>" +
           "</span>" +
         "</div>";
