@@ -81,7 +81,7 @@ Options
     <td>HTML</td><td>data-map-container-id</td><td>Set the ID of the
       element containing the map's destination element. Configuring this
       will automatically inject an open/close button to show/hide the map.
-      The container must have the "collapse" CSS class.</td>
+      The container must have Bootstrap's "collapse" CSS class.</td>
   </tr>
   <tr>
     <td>JavaScript</td><td>map</td><td>Map selector or map-element</td>
